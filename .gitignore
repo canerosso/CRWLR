@@ -36,3 +36,6 @@ yarn-debug.log*
 .yarn-integrity
 
 /app/assets/config/assets-private.rb
+
+# Ignore application configuration
+/config/application.yml

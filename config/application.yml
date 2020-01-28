@@ -9,3 +9,4 @@
 # production:
 #   stripe_api_key: sk_live_EeHnL644i6zo4Iyq4v1KdV9H
 #   stripe_publishable_key: pk_live_9lcthxpSIHbGwmdO941O1XVU
+GOOGLE_MAPS_API_KEY: "AIzaSyBCHsT2kzhR1fPfu7OUG_Z5GouUo-UNUnw"

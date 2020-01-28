@@ -1,5 +1,5 @@
 class Place < ApplicationRecord
-  # geocoded_by :address
+  geocoded_by :address
   # after_validation :geocode, if: :address_changed?
 
   has_many :crawl_places

@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="card border-0 shadow my-5 custom-opacity">
+    <div class="card-body p-4">
+        <h2 class="mb-4">Create a new crawl</h2>
+
+        <%= form_for @crawl, url: {action: "create"} do |f| %>
+            <div class="form-group">
+                <%= f.label :name %>
+                <%= f.text_field :name, class: "form-control"%>
+            </div>
+            <div class="form-group">
+                <%= f.label :location %>
+                <%= f.text_field :location, class: "form-control", value: "Las Vegas, NV", readonly: true %>
+            </div>
+            <div class="form-group">
+                <%= f.label :duration, "How many hours?" %>
+                <%= f.number_field :duration, class: "form-control"%>
+            </div>
+            <div class="form-group">
+                <%= f.label :date%>
+                <%= f.date_field :date, class: "form-control "%>
+            </div>
+            <div class="action">
+                <%= f.submit class: "btn btn-danger" %>
+            </div>
+        <%end%>
+    </div>
+    </div>
+</div>

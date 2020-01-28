@@ -1,0 +1,47 @@
+.navbar-brand {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 2em
+}
+
+body {
+    background: url('eric-tompkins-aEQjSheM5lc-unsplash.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    color: black;
+  }
+
+  .card-signin {
+    border: 1;
+    border-radius: 1rem;
+    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.3);
+  }
+  
+  .card-signin .card-title {
+    margin-bottom: 2rem;
+    font-weight: 300;
+    font-size: 1.5rem;
+  }
+  
+  .card-signin .card-body {
+    padding: 2rem;
+  }
+  
+  .form-signin {
+    width: 100%;    
+  }
+  
+  .form-signin .btn-custom {
+    font-size: 100%;
+    border-radius: 1rem;
+    letter-spacing: .1rem;
+    /* font-weight: bold; */
+    padding: 0.75rem;
+    transition: all 0.2s;
+  }
+
+  .custom-opacity {
+    background-color: rgba(255,255,255,0.8);
+  }
+

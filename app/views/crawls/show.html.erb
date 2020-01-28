@@ -1,0 +1,92 @@
+<% if @crawl.host == current_user %>
+
+  <div class="container">
+    <div class="card border-0 shadow my-5 custom-opacity">
+    <div class="card-body p-4">
+    <h2 class="my-4"><%=@crawl.name%>
+      <small><%=@crawl.location%></small>
+    </h2>
+    <h3>On <%=@crawl.date.strftime('%A, %B %d, %Y')%> for <%=@crawl.duration%> Hours</h3>
+    <hr>
+    <br>
+
+    <% if !@places.empty? %>
+      <div style="float: right;">
+        <%=image_tag @map_url%>
+      </div>
+      <% @places.each_with_index do |place, i| %>
+      <h4><%="#{i+1}. "%><%= link_to place.name, show_place_path(place) %></h4>
+      <p>Duration: <%= @crawl_places[i].duration %> Hours</p>
+      <%= button_to "Remove from Crawl", delete_crawl_place_path(@crawl), method: :delete, params: {crawl_place: {crawl_id: @crawl.id, place_id: place.id, duration: @duration}}, class: "btn btn-danger" %>
+      <br>
+      <% end %>
+    <% end %>
+
+    <h5><%= link_to "Add Places to this Crawl", select_place_type_path(@crawl) %></h5>
+
+    <% if @guests.empty? %>
+      <p>No guests for this crawl! Why dont you invite some?</p>
+    <%else%>
+      <h4>Invites</h4>
+      <div class="row">
+        <% @invites.each do |invite| %>
+          <%= form_with model: invite, url: delete_invite_path(invite), method: 'delete', class: "col-lg-3 my-2" do |form|%>
+              <%= form.label :name, "#{invite.user.name}", class: "col-form-label"%>
+              <div class="float-right">
+                <%= form.submit "Uninvite", class:"btn btn-danger"%>
+              </div>
+          <%end%>
+        <%end%>
+      </div>
+    <%end%>
+    <br><br>
+    <h3>Invite some people</h3>
+      <div class="row">
+        <% @potential_invites.each do |potential_invite|%>
+          <%= form_with model: @invite, url: "/invites", method: 'post', class: "col-lg-3 my-2" do |form| %>
+              <%= form.label :name, "#{potential_invite.name}", class: "col-form-label"%>
+              <%= form.hidden_field :user_id, :value => potential_invite.id%>
+              <%= form.hidden_field :crawl_id, :value => @crawl.id%>
+              <div class="float-right">
+                <%= form.submit "Invite", class:"btn btn-success"%>
+              </div>
+          <%end%>
+        <%end%>
+      </div>
+      </div>
+    </div>
+  </div>
+<% elsif @guests.include?(current_user) %>
+    <div class="container">
+      <div class="card border-0 shadow my-5 custom-opacity">
+        <div class="card-body p-4">
+            <h2 class="my-4"><%=@crawl.name%>
+              <small><%=@crawl.location%></small>
+            </h2>
+            <h3>Hosted by <%= @crawl.host.name %></h3>
+            <h3>On <%=@crawl.date.strftime('%A, %B %d, %Y')%> for <%=@crawl.duration%> Hours</h3>
+            <hr>
+            <br>
+
+            <% if !@places.empty? %>
+              <div style="float: right;">
+                <%=image_tag @map_url%>
+              </div>
+              <% @places.each_with_index do |place, i| %>
+              <h4><%="#{i+1}. "%><%= link_to place.name, show_place_path(place) %></h4>
+              <p>Duration: <%= @crawl_places[i].duration %> Hours</p>
+              <br>
+              <% end %>
+            <% end %>
+        </div>
+      </div>
+    </div>
+    <br><br>
+  </div>
+  <% else %>
+  <div class="card border-0 shadow my-5 custom-opacity">
+  <div class="card-body p-4">
+    <p> You do not have access to this page </p>
+    </div>
+    </div>
+<% end %>

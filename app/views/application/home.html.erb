@@ -1,3 +1,20 @@
-<h2>Welcome to CRWLR</h2>
-
-<p><%= link_to "User page", users_show_path(User.find(1)) %></p>
+<div class="container">
+    <div class="row">
+    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+    <div class="card card-signin my-5">
+    <div class="card-body">
+    <div class="form-signin">
+        <% if !logged_in? %>
+            <h2 class="text-center mb-4">Welcome to CRWLR</h2>
+            <%= link_to "Login", login_path, class: "btn btn-lg btn-primary btn-block text-uppercase btn-custom" %>
+            <div class="my-4 text-center text-dark">- OR -</div>
+            <%= link_to "Sign up", new_user_path, class: "btn btn-lg btn-primary btn-block text-uppercase btn-custom" %>
+        <% else %>
+            <p><%= link_to "My Crawls", show_user_path(current_user) %></p>
+        <% end %>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+</div>

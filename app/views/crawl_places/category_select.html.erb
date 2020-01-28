@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="card border-0 shadow my-5 custom-opacity">
+    <div class="card-body p-4">
+        <h2>Please select a category: </h2>
+
+        <%= form_tag search_results_path, method: :get, class: 'form-search' do %>
+        <%= label_tag "Category", nil, class: "form-label"%>
+        <%= select_tag "category", options_for_select(@categories), prompt: "Please Select", multiple: true, class: "form-control-lg"%>
+        <%= hidden_field_tag "duration", @duration %>
+        <br>
+        <%= submit_tag "Next", class: "btn btn-primary"%>
+        <% end %>
+    </div>
+    </div>    
+</div>

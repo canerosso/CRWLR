@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="card border-0 shadow my-5 custom-opacity">
+    <div class="card-body p-4">
+        <h2>Find a place in <%= @crawl.location %></h2>
+
+        <%= form_tag select_search_category_path, method: :get, class: 'form-search' do %>
+        <%= label_tag "What kind of place next?"%>
+        <%= select_tag :type, options_for_select(["Restaurant", "Bar"], "Restaurant") %>
+        <%= label_tag "For how long? (in hours)"%>
+        <%= select_tag :duration, options_for_select([1, 2, 3], 1) %>
+        <br>
+
+        <%= submit_tag "Next", class: "btn btn-primary" %>
+
+        <% end %>
+    </div>
+    </div>
+</div>

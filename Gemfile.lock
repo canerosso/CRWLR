@@ -56,15 +56,19 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
       zeitwerk (~> 2.2)
+    bcrypt (3.1.12)
     bindex (0.8.1)
     bootsnap (1.4.5)
       msgpack (~> 1.0)
+    bootstrap-datepicker-rails (1.8.0.1)
+      railties (>= 3.0)
     builder (3.2.3)
     byebug (11.0.1)
     concurrent-ruby (1.1.5)
     crass (1.0.5)
     erubi (1.9.0)
     ffi (1.11.1)
+    geocoder (1.5.2)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     i18n (1.7.0)
@@ -177,8 +181,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bcrypt (~> 3.1.7)
   bootsnap (>= 1.4.2)
+  bootstrap-datepicker-rails
   byebug
+  geocoder
   jbuilder (~> 2.7)
   listen (>= 3.0.5, < 3.2)
   puma (~> 4.1)

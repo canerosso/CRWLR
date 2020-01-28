@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="card border-0 shadow my-5 custom-opacity">
+    <div class="card-body p-4">
+        <h2>Results (sorted by distance from <%= @last_place == [36.1147, 115.1728] ? ("the Las Vegas Strip") : (@last_place.name)%>):</h2>
+
+        <ol>
+        <% @sorted_results.each do |place| %>
+        <li><h3><%=link_to place.name, show_place_path(place) %></h3></li>
+        <%= button_to "Add Place to Crawl", create_crawl_place_path(@crawl), params: {crawl_place: {crawl_id: @crawl.id, place_id: place.id, duration: @duration} }, class: "btn btn-primary" %>
+        <p><%= place.address %></p>
+        <p><%= place.categories %></p>
+        <% end %>
+        </ol>
+    </div>
+    </div>
+</div>

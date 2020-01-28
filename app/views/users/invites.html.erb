@@ -1,17 +1,17 @@
 <div class="container">
     <div class="card border-0 shadow my-5 custom-opacity">
     <div class="card-body p-4">
-    <h2>Hey, <%=@user.name%>!</h2>
+    <h2>Hey, <%=current_user.name%>! Here are the crawls you've been invited to.</h2>
     <br>
-    <%if @user_crawls.empty?%>
-        <p>No crawls yet!</p>
+    <%if @invited_crawls.empty?%>
+        <p>No invites!</p>
     <%else%>
         <div class="row">
-            <% @user_crawls.each_with_index do |crawl, i|%>
+            <% @invited_crawls.each do |crawl|%>
                 <div class="col-lg-4 col-sm-6 mb-4">
                     <div class="card h-100">
-                        <div class="card-body text-dark">
-                            <h2 class="card-title"><%=link_to crawl.name, show_crawl_path(crawl) %></h2>
+                        <div class="card-body">
+                            <h2 class="card-title"><%= crawl.host.name %>'s <%=link_to crawl.name, show_crawl_path(crawl) %></h2>
                             <h4><%=crawl.location%></h4>
                             <p class="card-text"><%=crawl.duration%> Hours</p>
                             <p class="card-text"><%=crawl.date.strftime('%A, %B %d, %Y')%></p>
@@ -21,7 +21,6 @@
             <%end %>
         </div>
     <%end %>
-    <p><%= link_to "Create a crawl", new_crawl_path, class: "btn btn-primary btn-lg" %></p>
     </div>
     </div>
 </div>
